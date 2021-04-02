@@ -13,26 +13,35 @@ export const Navbar = () => {
 				</div>
 			</Link>
 
-			<div className="DropdownButton" title={"Favorites " + store.favorites.length}>
-				{store.favorites.length == 0 ? (
-					<div className="dropdown-item">Favorites</div>
-				) : (
-					store.favorites.map((favItem, ind) => {
-						return (
-							<div className="dropdown-item" key={ind}>
-								{favItem}
+			<div className="dropdown">
+				<button
+					className="btn btn-primary dropdown-toggle"
+					type="button"
+					id="favoriteList"
+					data-bs-toggle="dropdown"
+					aria-expanded="false">
+					Favorites
+					<span className="badge bg-secondary m-1">{store.favorites.length}</span>
+				</button>
+
+				<ul className="dropdown-menu" aria-labelledby="favoriteList">
+					{store.favorites.length === 0 ? (
+						<p className="dropdown-item text-center">(Empty)</p>
+					) : (
+						store.favorites.map((fav, i) => (
+							<li className="dropdown-item" key={i}>
+								{fav}
 								<i
-									className="fas fa-trash-alt"
+									className="fas fa-trash"
 									onClick={() => {
-										actions.deleteFavorite(favItem);
+										actions.deleteFavorite(fav);
 									}}
 								/>
-							</div>
-						);
-					})
-				)}
+							</li>
+						))
+					)}
+				</ul>
 			</div>
-			<span>{store.favorites.length}</span>
 		</nav>
 	);
 };
