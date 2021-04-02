@@ -11,8 +11,16 @@
     padding: 5px;
 }
 .favoritesContainer:hover{
-    background-color: #FCD34D;
+    background-color: #FEF3C7;
     color:black
+}
+
+#un-fav {
+    color: #FCD34D;
+}
+
+#fav {
+    color: #1F2937;
 }
 
 h2{
