@@ -2,23 +2,19 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
+import CharacterImg from "../../img/400x200.jpg";
 
 export function CharactersCard(props) {
 	const { store, actions } = useContext(Context);
-	//console.log("Fav", store.favorites);
-	//console.log(store);
+
 	return (
 		<div className="d-flex flex-nowrap overflow-auto">
 			{!store.characters
-				? "cargando"
+				? "loading..."
 				: store.characters.map((person, index) => {
-						//console.log("person", person);
 						return (
-							<div className="card custom-card test my-4" key={index}>
-								<img
-									className="card-img-top"
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh3rDeGqhfMHdVCkogR1csg3lVCVXv5PQ09Q&usqp=CAU"
-								/>
+							<div className="card custom-card test m-4" key={index}>
+								<img className="card-img-top" src={CharacterImg} alt="character 400x200" />
 								<div className="card-body">
 									<h5 className="card-title text-left">{person.name}</h5>
 									<div className="card-text text-left">
@@ -29,7 +25,7 @@ export function CharactersCard(props) {
 									<div className="d-flex justify-content-between">
 										<Link to={`/people/${index}`}>
 											<button className="btn btn-outline-primary" id={index}>
-												More Details!
+												Learn more!
 											</button>
 										</Link>
 										<div

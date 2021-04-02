@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import starwars from "../../img/logo.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -8,21 +9,13 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
 				<div className="navbar-brand mx-5" href="#">
-					<img
-						src="https://i.pinimg.com/originals/c8/1b/f1/c81bf1592fcd3734f0a38ae75f07ade3.jpg"
-						width="50"
-						height="50"
-						className="d-inline-block align-top"
-						alt=""
-					/>
+					<img src={starwars} width="100" height="50" className="d-inline-block align-top" alt="logo" />
 				</div>
 			</Link>
 
-			<div className="DropdownButton" variant="primary" title={"Favorites " + store.favorites.length}>
+			<div className="DropdownButton" title={"Favorites " + store.favorites.length}>
 				{store.favorites.length == 0 ? (
-					<div classNmae="dropdown-item" href="#action/3.1">
-						Nothing here!
-					</div>
+					<div className="dropdown-item">Favorites</div>
 				) : (
 					store.favorites.map((favItem, ind) => {
 						return (
@@ -39,6 +32,7 @@ export const Navbar = () => {
 					})
 				)}
 			</div>
+			<span>{store.favorites.length}</span>
 		</nav>
 	);
 };

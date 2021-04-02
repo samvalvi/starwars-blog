@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import characterImg from "../../img/800x600.jpg";
 
 export function DetailInfoCharacters() {
 	const { store, action } = useContext(Context);
@@ -12,10 +13,7 @@ export function DetailInfoCharacters() {
 				<>
 					<div className="row justify-content-md-center">
 						<div className="col-md-6 col-lg-5 mb-4">
-							<img
-								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh3rDeGqhfMHdVCkogR1csg3lVCVXv5PQ09Q&usqp=CAU"
-								style={{ width: "100%", height: "400px" }}
-							/>
+							<img src={characterImg} alt="character 800x600" />
 						</div>
 						<div className="col-md-6 col-lg-5 text-center row mb-4">
 							<div className="align-self-center">
@@ -59,12 +57,6 @@ export function DetailInfoCharacters() {
 					</div>
 				</>
 			)}
-			<Link to="/">
-				<div className="btn btn-dark" variant="dark">
-					{" "}
-					Back Home
-				</div>
-			</Link>
 		</div>
 	);
 }

@@ -9,9 +9,9 @@ export const Home = () => {
 	const changeIconColor = name => {
 		const nameBelonging = store.favorites.findIndex(favorite => favorite == name);
 		if (nameBelonging === -1) {
-			return <i className="fas fa-heart" style={{ color: "yellow" }} />;
+			return <i className="fas fa-heart" style={{ color: "#FCD34D" }} />;
 		} else {
-			return <i className="fas fa-heart" style={{ color: "red" }} />;
+			return <i className="fas fa-heart" style={{ color: "#1F2937" }} />;
 		}
 	};
 	return (
