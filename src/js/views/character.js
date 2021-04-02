@@ -11,11 +11,11 @@ export function DetailInfoCharacters() {
 		<div className="container">
 			{store.characters.length > 0 && (
 				<>
-					<div className="row justify-content-md-center">
-						<div className="col-md-6 col-lg-5 mb-4">
-							<img src={characterImg} alt="character 800x600" />
+					<div className="row">
+						<div className="col-md-8">
+							<img src={characterImg} alt="character 800x600" className="card-img-top" />
 						</div>
-						<div className="col-md-6 col-lg-5 text-center row mb-4">
+						<div className="col-md-4 text-center row">
 							<div className="align-self-center">
 								<h5>{store.characters[params.characterid].name}</h5>
 								<p>
