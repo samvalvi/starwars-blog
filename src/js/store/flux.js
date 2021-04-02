@@ -1,114 +1,82 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			people: [],
+			characters: [],
 			planets: [],
-			vehicles: [],
 			favorites: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadPeople: () => {
-				fetch("https://swapi.dev/api/people/", {
-					method: `GET`,
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						//console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						//console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ people: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-				/** https://swapi.dev/api/people/1/
-					fetch("https://swapi.dev/api/people/1/").then().then(data => setStore({ "foo": data.bar }))
-                */
-			},
-			loadPlanets: () => {
-				fetch("https://swapi.dev/api/planets/", {
-					method: `GET`,
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ planets: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
-			loadVehicles: () => {
-				fetch("https://swapi.dev/api/vehicles/", {
-					method: `GET`,
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-					.then(resp => {
-						console.log(resp.ok);
-						if (!resp.ok) throw Error(resp.statusText);
-						console.log(resp.status);
-						return resp.json();
-					})
-					.then(data => {
-						setStore({ vehicles: data.results });
-					})
-					.catch(error => {
-						console.log(error);
-					});
-			},
-			addFavorites: (id, type) => {
+			getCharacters: async () => {
 				const store = getStore();
-				const favorite = { id, type };
-				setStore({ favorites: store.favorites.concat(favorite) });
+				const requestResponse = await fetch("https://www.swapi.tech/api/people/");
+				if (requestResponse.status == "200") {
+					const requestData = await requestResponse.json();
+					//console.log("Request Characters", requestData);
+					let charactersInfo = [];
+					requestData.results.forEach(person => {
+						fetch(person.url)
+							.then(responsePerson => responsePerson.json())
+							.then(personData => {
+								charactersInfo.push(personData.result.properties);
+								//setStore({ characters: charactersInfo });
+								setStore({ ...store, characters: charactersInfo });
+							})
+							.catch(error => console.log("Error: ", error));
+					});
+					//
+					//console.log("Characters Info", charactersInfo);
+					console.log("Characters object", store.characters);
+				} else console.log("Error request: ", requestResponse.status);
 			},
-			loadSomeData: () => {
-				/** 
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+			getPlanets: async () => {
+				const store = getStore();
+				const requestResp = await fetch("https://www.swapi.tech/api/planets/");
+				if (requestResp.status == "200") {
+					const reqDataPlanets = await requestResp.json();
+					//console.log("Request Planets", reqDataPlanets);
+					let planetsInfo = [];
+					reqDataPlanets.results.forEach(planet => {
+						fetch(planet.url)
+							.then(responsePlanet => responsePlanet.json())
+							.then(planetData => {
+								planetsInfo.push(planetData.result.properties);
+								setStore({ ...store, planets: planetsInfo });
+							});
+					});
+
+					//console.log("Planets Info", planetsInfo);
+					console.log("Planets object", store.planets);
+				} else console.log("Error requestPlanets", requestResp.status);
 			},
-			changeColor: (index, color) => {
-				//get the store
+			addToFavorites: name => {
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				if (store.favorites.includes(name)) {
+					//console.log("yes", store.favorites);
+				} else {
+					//1. Accedo a todo lo que hay en store
+					//2.Accedo al array favorito
+					//3.Accedo a todo lo que hay favoritos y le agrego name
+					setStore({ ...store, favorites: [...store.favorites, name] });
+				}
+				//console.log(store.favorites);
+			},
+			addToFavoritesPlanets: name => {
+				const store = getStore();
+				const avoidingrepetition = store.favorites.includes(name);
+				store.planets.map(item => {
+					if (item.name == name && avoidingrepetition === false) {
+						setStore({ ...store, favorites: [...store.favorites, name] });
+					}
 				});
-
-				//reset the global store
-				setStore({ demo: demo });
+			},
+			deleteFavorite: name => {
+				const store = getStore();
+				const updateFavorites = store.favorites.filter(item => {
+					return item != name;
+				});
+				setStore({ ...store, favorites: updateFavorites });
+				//console.log(updatefavorites);
 			}
 		}
 	};

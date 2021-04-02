@@ -1,43 +1,43 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import starwars from "../../img/logo.png";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	const [shown, setShown] = useState(false);
+	const { store, actions } = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
-					<img src={starwars} width="100px" height="50%" />
-				</span>
-			</Link>
-			<div className="ml-auto pr-5">
-				<div className={"dropdown " + (shown ? "show" : "")}>
-					<button
-						className="btn btn-primary dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						data-display="static"
-						aria-haspopup="true"
-						onClick={() => setShown(!shown)}
-						aria-expanded="false">
-						Favorites <span className="badge badge-light text-right">0</span>
-					</button>
-					<div
-						className={"dropdown-menu dropdown-menu-right " + (shown ? "show" : "")}
-						aria-labelledby="dropdownMenuButton">
-						<a className="dropdown-item" href="#">
-							Action
-						</a>
-						<a className="dropdown-item" href="#">
-							Another action
-						</a>
-						<a className="dropdown-item" href="#">
-							Something else here
-						</a>
-					</div>
+				<div className="navbar-brand mx-5" href="#">
+					<img
+						src="https://i.pinimg.com/originals/c8/1b/f1/c81bf1592fcd3734f0a38ae75f07ade3.jpg"
+						width="50"
+						height="50"
+						className="d-inline-block align-top"
+						alt=""
+					/>
 				</div>
+			</Link>
+
+			<div className="DropdownButton" variant="primary" title={"Favorites " + store.favorites.length}>
+				{store.favorites.length == 0 ? (
+					<div classNmae="dropdown-item" href="#action/3.1">
+						Nothing here!
+					</div>
+				) : (
+					store.favorites.map((favItem, ind) => {
+						return (
+							<div className="dropdown-item" key={ind}>
+								{favItem}
+								<i
+									className="fas fa-trash-alt"
+									onClick={() => {
+										actions.deleteFavorite(favItem);
+									}}
+								/>
+							</div>
+						);
+					})
+				)}
 			</div>
 		</nav>
 	);
