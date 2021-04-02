@@ -26,7 +26,7 @@ export const Navbar = () => {
 
 				<ul className="dropdown-menu" aria-labelledby="favoriteList">
 					{store.favorites.length === 0 ? (
-						<p className="dropdown-item text-center">(Empty)</p>
+						<p className="text-center">(Empty)</p>
 					) : (
 						store.favorites.map((fav, i) => (
 							<li className="dropdown-item" key={i}>
