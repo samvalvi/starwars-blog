@@ -2,7 +2,15 @@
 /* 
     General Styles
 */
+#character-info {
+    font-size: 20px;
+}
 
+.custom-card{
+    min-height: 350px;
+    min-width: 18rem;
+    margin-right: 5px;
+}
 .favoritesContainer{
     width: 38px;
     height: 38px;
@@ -26,11 +34,11 @@
 h2{
     color:#EF4444;
 }
-.custom-card{
-    min-height: 350px;
-    min-width: 18rem;
-    margin-right: 5px;
+
+#planet-info {
+    font-size: 20px;
 }
+
 .test{
     width: 350px;
 }

@@ -12,13 +12,13 @@ export function DetailInfoPlanet() {
 			{store.planets.length > 0 && (
 				<>
 					<div className="row">
-						<div className="col-md-8">
+						<div className="col-md-6">
 							<img src={PlanetImg} alt="planet 800x600" className="card-img-top" />
 						</div>
-						<div className="col-md-4 text-center row">
+						<div className="col-md-6 text-center row">
 							<div className="align-self-center">
-								<h5>{store.planets[params.planetid].name}</h5>
-								<p>
+								<h3>{store.planets[params.planetid].name}</h3>
+								<p id="planet-info">
 									Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
 									print, graphic or web designs. The passage is attributed to an unknown typesetter in
 									the 15th century who is thought to have scrambled parts of Cicero&apos;s De Finibus
