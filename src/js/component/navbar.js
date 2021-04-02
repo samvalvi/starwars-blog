@@ -18,29 +18,31 @@ export const Navbar = () => {
 					className="btn btn-primary dropdown-toggle"
 					type="button"
 					id="favoriteList"
-					data-bs-toggle="dropdown"
+					data-toggle="dropdown"
+					aria-haspopup="true"
 					aria-expanded="false">
 					Favorites
 					<span className="badge bg-secondary m-1">{store.favorites.length}</span>
 				</button>
-
-				<ul className="dropdown-menu" aria-labelledby="favoriteList">
-					{store.favorites.length === 0 ? (
-						<p className="text-center">(Empty)</p>
-					) : (
-						store.favorites.map((fav, i) => (
-							<li className="dropdown-item" key={i}>
-								{fav}
-								<i
-									className="fas fa-trash"
-									onClick={() => {
-										actions.deleteFavorite(fav);
-									}}
-								/>
-							</li>
-						))
-					)}
-				</ul>
+				<div className="dropdown-menu">
+					<ul className="dropdown-menu" aria-labelledby="favoriteList">
+						{store.favorites.length === 0 ? (
+							<p className="text-center">(Empty)</p>
+						) : (
+							store.favorites.map((fav, i) => (
+								<li className="dropdown-item" key={i}>
+									{fav}
+									<i
+										className="fas fa-trash"
+										onClick={() => {
+											actions.deleteFavorite(fav);
+										}}
+									/>
+								</li>
+							))
+						)}
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);
