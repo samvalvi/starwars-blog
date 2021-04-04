@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import PlanetImg from "../../img/400x200.jpg";
 
-export function PlanetsCard(props) {
+export function PlanetsCard({ icon }) {
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -28,7 +28,7 @@ export function PlanetsCard(props) {
 									onClick={() => {
 										actions.addToFavoritesPlanets(planet.name);
 									}}>
-									{props.icon(planet.name)}
+									{icon(planet.name)}
 								</div>
 							</div>
 						</div>

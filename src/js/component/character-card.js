@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import CharacterImg from "../../img/400x200.jpg";
 
-export function CharactersCard(props) {
+export function CharactersCard({ icon }) {
 	const { store, actions } = useContext(Context);
 
 	return (
@@ -33,7 +33,7 @@ export function CharactersCard(props) {
 											onClick={() => {
 												actions.addToFavorites(person.name);
 											}}>
-											{props.icon(person.name)}
+											{icon(person.name)}
 										</div>
 									</div>
 								</div>

@@ -24,7 +24,12 @@ export const Navbar = () => {
 					Favorites
 					<span className="badge bg-secondary m-1">{store.favorites.length}</span>
 				</button>
-				<div className="dropdown-menu">
+
+				{store.favorites.length === 0 ? (
+					<ul className="dropdown-menu" aria-labelledby="favoriteList">
+						<li className="dropdown-item text-center">(empty)</li>
+					</ul>
+				) : (
 					<ul className="dropdown-menu" aria-labelledby="favoriteList">
 						{store.favorites.length === 0 ? (
 							<p className="text-center">(Empty)</p>
@@ -42,7 +47,7 @@ export const Navbar = () => {
 							))
 						)}
 					</ul>
-				</div>
+				)}
 			</div>
 		</nav>
 	);
