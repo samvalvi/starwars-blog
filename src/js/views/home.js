@@ -9,7 +9,7 @@ export const Home = () => {
 	const changeIconColor = name => {
 		const nameBelonging = store.favorites.findIndex(favorite => favorite == name);
 		if (nameBelonging === -1) {
-			return <i className="far fa-heart" id="un-fav" />;
+			return <i className="far fa-heart" />;
 		} else {
 			return <i className="fas fa-heart" id="fav" />;
 		}
