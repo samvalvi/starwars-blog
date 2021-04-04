@@ -16,7 +16,7 @@ export const Navbar = () => {
 
 			<div className="dropdown">
 				<button
-					className="btn btn-primary dropdown-toggle"
+					className="btn btn-warning dropdown-toggle"
 					type="button"
 					id="favoriteList"
 					data-toggle="dropdown"
