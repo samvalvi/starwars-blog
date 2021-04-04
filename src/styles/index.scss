@@ -2,6 +2,14 @@
 /* 
     General Styles
 */
+html body {
+    background-image: url("../img/background.jpg");
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #character-info {
     font-size: 20px;
 }
@@ -31,8 +39,18 @@
     color: #1F2937;
 }
 
+#favoriteList {
+    background-color: #FFE81F;
+    border:none;
+    color: #000000;
+}
+
 h2{
-    color:#EF4444;
+    color:#FFE81F;
+}
+
+h3 {
+    color: #ffffff;
 }
 
 #planet-info {
