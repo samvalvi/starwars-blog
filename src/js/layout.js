@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { DetailInfoCharacters } from "./views/character";
@@ -16,7 +16,7 @@ const Layout = () => {
 
 	return (
 		<div className="d-flex flex-column">
-			<BrowserRouter basename={basename}>
+			<Router basename={basename}>
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
@@ -35,7 +35,7 @@ const Layout = () => {
 					</Switch>
 					<Footer />
 				</ScrollToTop>
-			</BrowserRouter>
+			</Router>
 		</div>
 	);
 };

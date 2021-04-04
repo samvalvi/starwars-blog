@@ -13,7 +13,7 @@ export function CharactersCard({ icon }) {
 				? "loading..."
 				: store.characters.map((person, index) => {
 						return (
-							<div className="card custom-card test m-4" key={index}>
+							<div className="card custom-card custom-height bg-dark m-4" key={index}>
 								<img className="card-img-top" src={CharacterImg} alt="character 400x200" />
 								<div className="card-body">
 									<h5 className="card-title text-left">{person.name}</h5>
@@ -24,7 +24,7 @@ export function CharactersCard({ icon }) {
 									</div>
 									<div className="d-flex justify-content-between">
 										<Link to={`/people/${index}`}>
-											<button className="btn btn-outline-primary" id={index}>
+											<button className="btn btn-danger" id={index}>
 												Learn more!
 											</button>
 										</Link>

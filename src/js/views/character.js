@@ -18,7 +18,7 @@ export function DetailInfoCharacters() {
 						<div className="col-md-6 text-center row">
 							<div className="align-self-center">
 								<h3>{store.characters[params.characterid].name}</h3>
-								<p className="text-warning" id="character-info">
+								<p id="character-info">
 									Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out
 									print, graphic or web designs. The passage is attributed to an unknown typesetter in
 									the 15th century who is thought to have scrambled parts of Cicero&apos;s De Finibus

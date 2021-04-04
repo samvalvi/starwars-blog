@@ -11,17 +11,19 @@ export function PlanetsCard({ icon }) {
 		<div className="d-flex flex-nowrap overflow-auto">
 			{store.planets.map((planet, index) => {
 				return (
-					<div className="card custom-card test m-4 row" key={index}>
+					<div className="card custom-card custom-height bg-dark m-4 row" key={index}>
 						<img className="card-img-top" src={PlanetImg} alt="planet 400x200" />
 						<div className="card-body">
 							<h5 className="card-title text-left">{planet.name}</h5>
 							<div className="card-text text-left">
 								<p>Population: {planet.population}</p>
-								<p>Terrain: {planet.terrain}</p>
+								<p>Climate: {planet.climate}</p>
 							</div>
 							<div className="d-flex justify-content-between">
 								<Link to={`/planet/${index}`}>
-									<button className="btn btn-outline-primary">More Details!</button>
+									<button className="btn btn-danger" id={index}>
+										Learn More!
+									</button>
 								</Link>
 								<div
 									className="favoritesContainer"
