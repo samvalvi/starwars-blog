@@ -17,7 +17,7 @@ export function PlanetsCard({ icon }) {
 							<h5 className="card-title text-left">{planet.name}</h5>
 							<div className="card-text text-left">
 								<p>Population: {planet.population}</p>
-								<p>Climate: {planet.climate}</p>
+								<p>Terrain: {planet.terrain}</p>
 							</div>
 							<div className="d-flex justify-content-between">
 								<Link to={`/planet/${index}`}>
