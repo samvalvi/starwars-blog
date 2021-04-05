@@ -46,22 +46,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Planets object", store.planets);
 				} else console.log("Error requestPlanets", requestResp.status);
 			},
-			addToFavorites: name => {
+			addFavorite: name => {
 				const store = getStore();
 
 				if (store.favorites.includes(name)) {
 				} else {
 					setStore({ ...store, favorites: [...store.favorites, name] });
 				}
-			},
-			addToFavoritesPlanets: name => {
-				const store = getStore();
-				const avoidingrepetition = store.favorites.includes(name);
-				store.planets.map(item => {
-					if (item.name == name && avoidingrepetition === false) {
-						setStore({ ...store, favorites: [...store.favorites, name] });
-					}
-				});
 			},
 			deleteFavorite: name => {
 				const store = getStore();

@@ -28,7 +28,7 @@ export function PlanetsCard({ icon }) {
 								<div
 									className="favoritesContainer btn-outline-warning"
 									onClick={() => {
-										actions.addToFavoritesPlanets(planet.name);
+										actions.addFavorite(planet.name);
 									}}>
 									{icon(planet.name)}
 								</div>

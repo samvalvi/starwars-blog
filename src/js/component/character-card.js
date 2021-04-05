@@ -31,7 +31,7 @@ export function CharactersCard({ icon }) {
 										<div
 											className="favoritesContainer btn-outline-warning"
 											onClick={() => {
-												actions.addToFavorites(person.name);
+												actions.addFavorite(person.name);
 											}}>
 											{icon(person.name)}
 										</div>
