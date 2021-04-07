@@ -21,11 +21,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 								setStore({ ...store, characters: charactersInfo });
 							})
-							.catch(error => console.log("Error: ", error));
+							.catch(error => console.log(error));
 					});
 
-					console.log("Characters object", store.characters);
-				} else console.log("Error request: ", requestResponse.status);
+					console.log("Characters:", store.characters);
+				} else console.log("Error: ", requestResponse.status);
 			},
 			getPlanets: async () => {
 				const store = getStore();
@@ -43,8 +43,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							});
 					});
 
-					console.log("Planets object", store.planets);
-				} else console.log("Error requestPlanets", requestResp.status);
+					console.log("Planets: ", store.planets);
+				} else console.log("Error: ", requestResp.status);
 			},
 			addFavorite: name => {
 				const store = getStore();
