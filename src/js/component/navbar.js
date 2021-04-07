@@ -15,7 +15,7 @@ export const Navbar = () => {
 				</div>
 			</Link>
 			<div className="mx-2">
-				<DropdownButton variant="primary" title={"Favorites " + store.favorites.length}>
+				<DropdownButton variant="warning" title={"Favorites " + store.favorites.length}>
 					{store.favorites.length == 0 ? (
 						<NavDropdown.Item href="#action/3.1">(Empty)</NavDropdown.Item>
 					) : (
@@ -24,7 +24,7 @@ export const Navbar = () => {
 								<NavDropdown.Item key={i}>
 									{fav}
 									<i
-										className="fas fa-trash float-right"
+										className="fas fa-trash ml-4"
 										onClick={() => {
 											actions.deleteFavorite(fav);
 										}}
